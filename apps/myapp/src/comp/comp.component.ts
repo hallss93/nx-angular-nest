@@ -1,16 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Message } from '@myapp/api-interfaces';
 
 @Component({
   selector: 'myapp-comp',
   templateUrl: './comp.component.html',
-  styleUrls: ['./comp.component.scss']
+  styleUrls: ['./comp.component.scss'],
 })
 export class CompComponent implements OnInit {
-  @Input() message: string;
+  @Input() message: Message;
 
-  constructor() { }
+  constructor() {}
+
+  ngOnChanges(_changes: any) {}
 
   ngOnInit(): void {
+    console.log(this.message);
   }
-
 }

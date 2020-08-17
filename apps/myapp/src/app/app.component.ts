@@ -8,6 +8,11 @@ import { Message } from '@myapp/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello: Message;
   constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    this.http.get<Message>('/api/hello').subscribe((message: Message) => {
+      this.hello = message;
+    });
+  }
 }
